@@ -6,7 +6,7 @@ const initialState = {
     loading: false
 }
 
-export default (state = initialState, action) => {
+export default function(state = initialState, action) {
     switch (action.type) {
         case GET_ITEMS:
             return {
@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
         case DELETE_ITEM:
             return {
                 ...state,
-                items: state.items.filter(item => item._id != action.payload)
+                items: state.items.filter(item => item._id !== action.payload)
             };
         case ADD_ITEM:
             return {
