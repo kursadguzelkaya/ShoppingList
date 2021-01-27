@@ -2,7 +2,7 @@ import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGIS
 
 const initialState = {
     token: localStorage.getItem('token'),
-    isAuthonacated: null,
+    isAuthenticated: null,
     isLoading: false,
     user: null
 };
@@ -18,7 +18,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isLoading: false,
-                isAuthonacated: true,
+                isAuthenticated: true,
                 user: action.payload
             };
         case AUTH_ERROR:
@@ -29,17 +29,18 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 token: null,
-                isAuthonacated: null,
+                isAuthenticated: null,
                 isLoading: false,
                 user: null
             };
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
+            localStorage.setItem('token', action.payload.token);
             return {
                 ...state,
                 ...action.payload,
                 isLoading: false,
-                isAuthonacated: true
+                isAuthenticated: true
             };
         default:
             return state;

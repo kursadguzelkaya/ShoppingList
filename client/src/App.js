@@ -11,7 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import { loadUser } from './actions/AuthActions';
 
-
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());

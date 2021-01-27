@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const router = express.Router();
 
-// Item Model
+// User Model
 const User = require('../../models/User');
 
 // @route  POST api/users
@@ -57,6 +57,9 @@ router.post('/', (req,res) => {
             });
 
         })
+    .catch(err => {
+        res.status(400).json({ msg: "Something is wrong"})
+    })
 });
 
     
